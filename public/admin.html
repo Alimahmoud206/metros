@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metro Live — Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">METRO<span>LIVE</span></span>
+      <span class="brand-sub">Admin control panel</span>
+    </div>
+    <div class="topbar-actions">
+      <a class="mode-link" href="/index.html">← Passenger board</a>
+    </div>
+  </header>
+
+  <main class="page" style="max-width:420px;" id="login-wrap">
+    <div class="card" id="login-card">
+      <div class="section-eyebrow">Sign in</div>
+      <h1 class="card-title">Admin access</h1>
+      <p class="card-subtitle">Post live announcements to any station.</p>
+      <div id="login-error" class="banner error"></div>
+      <form id="login-form" novalidate>
+        <label for="login-email">Email</label>
+        <input id="login-email" type="email" autocomplete="username" required />
+        <label for="login-password">Password</label>
+        <input id="login-password" type="password" autocomplete="current-password" required />
+        <button id="login-btn" type="submit" class="btn btn-primary">Sign in</button>
+      </form>
+    </div>
+  </main>
+
+  <main class="admin-grid" id="dashboard" style="display:none;">
+    <aside>
+      <div class="card">
+        <div class="admin-identity">
+          <span id="admin-email" class="admin-identity-email"></span>
+          <button id="logout-btn" class="link-btn" type="button">Sign out</button>
+        </div>
+        <div class="section-eyebrow">Stations</div>
+        <div id="station-nav">
+          <p class="skeleton">Loading stations…</p>
+        </div>
+      </div>
+    </aside>
+
+    <section>
+      <div class="card">
+        <div class="board-station-block" style="margin-bottom:14px;">
+          <span id="compose-line-badge" class="board-line-badge">—</span>
+          <h2 id="compose-station-name" class="board-station-name" style="font-size:26px;">Select a station</h2>
+          <div id="admin-viewer-count" class="viewer-count"><strong>0</strong> watching this station</div>
+        </div>
+
+        <div id="compose-banner" class="banner success"></div>
+        <div id="compose-error" class="banner error"></div>
+
+        <form id="compose-form">
+          <label for="compose-text">New announcement</label>
+          <textarea id="compose-text" maxlength="500" placeholder="e.g. Next train to Helwan arrives in 3 minutes on Platform 2."></textarea>
+          <button type="submit" class="btn btn-primary">Post announcement</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <div class="card-title" style="font-size:15px;">Recent announcements</div>
+        <ul id="admin-feed" class="feed" style="margin:0 -22px -22px;">
+          <li class="skeleton">Select a station to see its announcements.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

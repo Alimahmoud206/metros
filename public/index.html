@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metro Live — Station Board</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">METRO<span>LIVE</span></span>
+      <span class="brand-sub">Passenger board</span>
+    </div>
+    <div class="topbar-actions">
+      <a class="mode-link" href="/admin.html">Admin sign in →</a>
+    </div>
+  </header>
+
+  <main class="page">
+    <section id="station-switcher" aria-label="Choose a station">
+      <p class="skeleton">Loading stations…</p>
+    </section>
+
+    <section class="board" aria-live="polite">
+      <div class="board-header">
+        <div class="board-station-block">
+          <span id="board-line-badge" class="board-line-badge">—</span>
+          <h1 id="board-station-name" class="board-station-name"><span class="flap">Loading…</span></h1>
+        </div>
+        <div class="board-status">
+          <span class="live-chip"><span class="live-dot"></span>Live</span>
+          <div id="viewer-count" class="viewer-count"><strong>0</strong> watching this station</div>
+        </div>
+      </div>
+      <ul id="feed" class="feed">
+        <li class="skeleton">Loading announcements…</li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/passenger.js"></script>
+</body>
+</html>
